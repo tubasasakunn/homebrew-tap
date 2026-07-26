@@ -7,7 +7,7 @@ cask "oreore-mac-widget" do
   desc "Menu bar app that shows Claude Code usage (5-hour session and weekly limits)"
   homepage "https://github.com/tubasasakunn/oreore-mac-widget"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "oreore-mac-widget.app"
 
