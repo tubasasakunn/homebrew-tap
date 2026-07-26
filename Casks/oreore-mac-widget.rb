@@ -20,8 +20,10 @@ cask "oreore-mac-widget" do
   uninstall quit: "com.tubasasakun.oreore-mac-widget"
 
   zap trash: [
-    "~/Library/Preferences/com.tubasasakun.oreore-mac-widget.plist",
+    "~/Library/Application Scripts/com.tubasasakun.oreore-mac-widget",
     "~/Library/Caches/com.tubasasakun.oreore-mac-widget",
+    "~/Library/Containers/com.tubasasakun.oreore-mac-widget",
     "~/Library/HTTPStorages/com.tubasasakun.oreore-mac-widget",
+    "~/Library/Preferences/com.tubasasakun.oreore-mac-widget.plist",
   ]
 end
