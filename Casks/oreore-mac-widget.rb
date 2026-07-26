@@ -1,6 +1,6 @@
 cask "oreore-mac-widget" do
-  version "1.1.0"
-  sha256 "7dbe1cab82f5bfafcb8537b5bfc21e820a815a402b228b0e3a7d34250ad07475"
+  version "1.2.0"
+  sha256 "7bd68637dd691a7846cf8424f02af5e32551b45d0c18cc5601a58dbe3cf1a8e2"
 
   url "https://github.com/tubasasakunn/oreore-mac-widget/releases/download/v#{version}/oreore-mac-widget-#{version}.zip"
   name "oreore-mac-widget"
