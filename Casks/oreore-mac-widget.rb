@@ -1,10 +1,10 @@
 cask "oreore-mac-widget" do
-  version "1.2.2"
-  sha256 "dcb5dda2b8271f3388fd63737e69e447288137be85d43083492d06c0a26f5b49"
+  version "1.3.0"
+  sha256 "6db229671899f2348ba00097d6a347be7666012ac7343a5203bd1ff2e051641d"
 
   url "https://github.com/tubasasakunn/oreore-mac-widget/releases/download/v#{version}/oreore-mac-widget-#{version}.zip"
   name "oreore-mac-widget"
-  desc "Notification Center widget that shows Claude Code usage (5-hour and weekly limits)"
+  desc "Notification Center widget that shows Claude Code usage and scheduled routines"
   homepage "https://github.com/tubasasakunn/oreore-mac-widget"
 
   depends_on macos: :sonoma
