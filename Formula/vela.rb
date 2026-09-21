@@ -9,19 +9,21 @@ class Vela < Formula
 
   def install
     system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "vela"
-    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "VelaApp"
-    build_path = Dir[".build/**/release"].find { |path| File.file?("#{path}/vela") && File.file?("#{path}/VelaApp") }
-    odie "SwiftPM did not produce Vela binaries" unless build_path
+    cli_path = Dir[".build/**/release"].find { |path| File.file?("#{path}/vela") }
+    odie "SwiftPM did not produce the Vela CLI" unless cli_path
+    bin.install "#{cli_path}/vela"
 
-    bin.install "#{build_path}/vela"
+    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "VelaApp"
+    app_path = Dir[".build/**/release"].find { |path| File.file?("#{path}/VelaApp") }
+    odie "SwiftPM did not produce the Vela application" unless app_path
 
     app = libexec/"Vela.app"
     (app/"Contents/MacOS").mkpath
     (app/"Contents/Resources").mkpath
     cp "Resources/Info.plist", app/"Contents/Info.plist"
-    cp "#{build_path}/VelaApp", app/"Contents/MacOS/Vela"
+    cp "#{app_path}/VelaApp", app/"Contents/MacOS/Vela"
     (app/"Contents/Helpers").mkpath
-    cp "#{build_path}/vela", app/"Contents/Helpers/vela"
+    cp bin/"vela", app/"Contents/Helpers/vela"
     system "codesign", "--force", "--sign", "-", app
   end
 
