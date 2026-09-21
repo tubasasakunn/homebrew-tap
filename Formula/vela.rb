@@ -28,6 +28,6 @@ class Vela < Formula
   end
 
   test do
-    assert_match "Usage: vela <command>", shell_output("#{bin}/vela")
+    assert_match "Usage: vela <command>", shell_output(bin/"vela")
   end
 end
