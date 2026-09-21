@@ -1,9 +1,9 @@
 class Vela < Formula
   desc "File-configured macOS launcher, clipboard, hotkey, and window utility"
   homepage "https://github.com/tubasasakunn/vela"
-  url "https://github.com/tubasasakunn/vela/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "7e0939a0fc6f34009c4689c08cc04309994840067b4d785fa4fe565e67879098"
-  version "0.2.0"
+  url "https://github.com/tubasasakunn/vela/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "2ac816becea54d21994e4157f7dcf6abf21301fbeb967784b673ef8fc2d47eca"
+  version "0.2.1"
 
   depends_on xcode: :build
 
