@@ -8,9 +8,10 @@ class Vela < Formula
   depends_on xcode: :build
 
   def install
-    build_path = shell_output("swift build --disable-sandbox --configuration release --show-bin-path").chomp
     system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "vela"
     system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "VelaApp"
+    build_path = Dir[".build/**/release"].find { |path| File.file?("#{path}/vela") && File.file?("#{path}/VelaApp") }
+    odie "SwiftPM did not produce Vela binaries" unless build_path
 
     bin.install "#{build_path}/vela"
 
