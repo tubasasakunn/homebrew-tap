@@ -1,9 +1,9 @@
 class Vela < Formula
   desc "File-configured macOS launcher, clipboard, hotkey, and window utility"
   homepage "https://github.com/tubasasakunn/vela"
-  url "https://github.com/tubasasakunn/vela/archive/refs/tags/v0.2.5.tar.gz"
-  sha256 "726f1103f22047382c20682aa18fbb862f44001b325af9a44c51bd9346f4170f"
-  version "0.2.5"
+  url "https://github.com/tubasasakunn/vela/archive/refs/tags/v0.2.6.tar.gz"
+  sha256 "3934d5cea4a6c47fad5c95bea68a9042ebccd17a2858f9a10bcc9e96454f944d"
+  version "0.2.6"
 
   depends_on xcode: :build
 
@@ -24,7 +24,14 @@ class Vela < Formula
     cp "#{app_path}/VelaApp", app/"Contents/MacOS/Vela"
     (app/"Contents/Helpers").mkpath
     cp bin/"vela", app/"Contents/Helpers/vela"
-    system "codesign", "--force", "--sign", "-", app
+    developer_id = "Developer ID Application: BasaApp Technologies (7NN5KD3TSU)"
+    identities = Utils.safe_popen_read("security", "find-identity", "-v", "-p", "codesigning")
+    if identities.include?(developer_id)
+      system "codesign", "--force", "--options", "runtime", "--timestamp", "--sign", developer_id, app
+    else
+      opoo "Developer ID certificate was not found; using an ad-hoc signature"
+      system "codesign", "--force", "--sign", "-", app
+    end
   end
 
   service do
