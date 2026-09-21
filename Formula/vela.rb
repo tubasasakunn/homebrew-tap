@@ -1,9 +1,9 @@
 class Vela < Formula
   desc "File-configured macOS launcher, clipboard, hotkey, and window utility"
   homepage "https://github.com/tubasasakunn/vela"
-  url "https://github.com/tubasasakunn/vela/releases/download/v0.2.7/vela-0.2.7-darwin-arm64.tar.gz"
-  sha256 "02266fd85c777d596ea86f7af248a78824dfbdc7b54366d6da6ed8c8f98b0805"
-  version "0.2.7"
+  url "https://github.com/tubasasakunn/vela/releases/download/v0.2.8/vela-0.2.8-darwin-arm64.tar.gz"
+  sha256 "abadbaed037b8e2df9d6a64379499c9cae34f0d945dc3da86b75d0ab5ea62ecc"
+  version "0.2.8"
 
   def install
     bin.install "vela"
