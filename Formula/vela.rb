@@ -8,8 +8,8 @@ class Vela < Formula
   depends_on xcode: :build
 
   def install
-    system "swift", "build", "--configuration", "release", "--product", "vela"
-    system "swift", "build", "--configuration", "release", "--product", "VelaApp"
+    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "vela"
+    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "VelaApp"
 
     bin.install ".build/release/vela"
 
