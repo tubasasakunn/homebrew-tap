@@ -8,17 +8,19 @@ class Vela < Formula
   depends_on xcode: :build
 
   def install
+    build_path = shell_output("swift build --disable-sandbox --configuration release --show-bin-path").chomp
     system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "vela"
     system "swift", "build", "--disable-sandbox", "--configuration", "release", "--product", "VelaApp"
 
-    bin.install ".build/release/vela"
+    bin.install "#{build_path}/vela"
 
     app = libexec/"Vela.app"
     (app/"Contents/MacOS").mkpath
     (app/"Contents/Resources").mkpath
     cp "Resources/Info.plist", app/"Contents/Info.plist"
-    cp ".build/release/VelaApp", app/"Contents/MacOS/Vela"
-    cp ".build/release/vela", app/"Contents/Helpers/vela" if (app/"Contents/Helpers").mkpath
+    cp "#{build_path}/VelaApp", app/"Contents/MacOS/Vela"
+    (app/"Contents/Helpers").mkpath
+    cp "#{build_path}/vela", app/"Contents/Helpers/vela"
     system "codesign", "--force", "--sign", "-", app
   end
 
